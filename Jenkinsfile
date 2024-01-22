@@ -3,7 +3,7 @@ pipeline {
 
 	environment {
 		SYSTEM_PATH = "C:\\Windows\\System32"
-		MAVEN_PATH = "C:\\apache-maven-3.9.6\\bin"
+		MAVEN_PATH = "C:\\DEV\\apache-maven-3.9.6\\bin"
 		PATH = "${SYSTEM_PATH};${MAVEN_PATH}"
 	}
 
