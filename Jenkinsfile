@@ -8,36 +8,32 @@ pipeline {
     }
 
     stages {
-        stage('Preparación del Proyecto') {
+        stage('Preparación del proyecto') {
             steps {
-                // Clonar el repositorio remoto
-                checkout scml
+                checkout scm
             }
         }
-
-        stage('Construcción del Proyecto') {
+        
+        stage('Construcción del proyecto') {
             steps {
-                // Realizar la construcción del proyecto con Maven
                 bat 'mvn clean package'
             }
         }
 
-        stage('Pruebas y Generación de Reportes') {
+        stage('Pruebas y resultados') {
             steps {
                 bat 'mvn test'
             }
             post {
-                always{
-                    // Realizar las pruebas y guardar los resultados en un archivo XML con Maven
+                always {
                     junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
                 }
             }
         }
     }
-
+    
     post {
         success {
-            // Paso 4: Evidenciar artefacto generado después de la compilación
             archiveArtifacts artifacts: '**/target/*.war', allowEmptyArchive: true
         }
     }
