@@ -4,7 +4,7 @@ pipeline {
     environment {
         SYSTEM_PATH = "C:\\Windows\\System32"
         MAVEN_PATH = "C:\\DEV\\apache-maven-3.9.6\\bin"
-        JAVA_HOME = "C:\\Path\\To\\Your\\Java\\JDK"  // Reemplaza con la ruta correcta de tu JDK
+        JAVA_HOME = "C:\\Program Files\\Java\\jdk-17"
         PATH = "${SYSTEM_PATH};${MAVEN_PATH};${JAVA_HOME}\\bin"
     }
 
