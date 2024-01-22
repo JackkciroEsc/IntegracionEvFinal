@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Clonar el repositorio remoto
-                    bat 'git clone https://github.com/JackkciroEsc/IntegracionEvFinal.git'
+                    checkout scml
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Realizar la construcción del proyecto con Maven
-                    bat 'mvn clean install'
+                    bat 'mvn clean package'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 script {
                     // Realizar las pruebas y guardar los resultados en un archivo XML con Maven
-                    bat 'mvn test'
+                    junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
                 }
             }
         }
